@@ -5,51 +5,100 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>MetricLab | Estrategia, Control de Gestión y Tecnología para Pymes</title>
   <meta name="description" content="Implementamos control de gestión, planificación estratégica y soluciones de datos (BI/automatización) para pymes y medianas empresas en Chile. Resultados medibles en 90 días." />
+
+  <!-- Tipografía (opcional pero recomendado) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#0b1220;
-      --card:#0f1a2e;
-      --muted:#9bb0d1;
-      --text:#e9f0ff;
+      --bg2:#071022;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.04);
+      --muted:#a8b8d6;
+      --text:#eaf1ff;
+
       --accent:#69f0c2;
       --accent2:#78a6ff;
-      --line:rgba(255,255,255,.12);
+
+      --line: rgba(255,255,255,.12);
+      --line2: rgba(255,255,255,.08);
+
       --shadow: 0 18px 40px rgba(0,0,0,.35);
-      --radius:18px;
-      --max:1100px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --shadow2: 0 12px 26px rgba(0,0,0,.22);
+
+      --radius: 18px;
+      --radius2: 22px;
+
+      --max: 1120px;
+      --font: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family:var(--font);
-      background: radial-gradient(1200px 900px at 15% 10%, rgba(120,166,255,.18), transparent 55%),
-                  radial-gradient(1000px 700px at 80% 20%, rgba(105,240,194,.14), transparent 55%),
-                  var(--bg);
       color:var(--text);
-      line-height:1.45;
+      line-height:1.55;
+      background:
+        radial-gradient(1200px 900px at 15% 10%, rgba(120,166,255,.20), transparent 55%),
+        radial-gradient(1000px 700px at 80% 20%, rgba(105,240,194,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
     }
+
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:24px}
+    .section{padding:56px 0}
+    .section-tight{padding:40px 0}
+
+    /* Top nav */
     .nav{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter: blur(10px);
-      background: rgba(11,18,32,.6);
-      border-bottom:1px solid var(--line);
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(11,18,32,.62);
+      border-bottom:1px solid var(--line2);
     }
     .nav .row{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
       max-width:var(--max); margin:0 auto; padding:14px 24px;
     }
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, var(--accent2), var(--accent));
-      box-shadow: 0 10px 24px rgba(120,166,255,.25);
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 180px;
     }
-    .navlinks{display:flex; gap:18px; flex-wrap:wrap; color:var(--muted); font-size:14px}
-    .navlinks a{text-decoration:none}
-    .navlinks a:hover{color:var(--text)}
+
+    /* ✅ Logo real */
+    .brand-logo{
+      height:38px;
+      width:auto;
+      display:block;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.22));
+    }
+
+    .navlinks{
+      display:flex; gap:18px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .navlinks a{
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:12px;
+      transition:.18s ease;
+    }
+    .navlinks a:hover{
+      color:var(--text);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    /* Buttons */
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       border:1px solid rgba(255,255,255,.18);
@@ -61,126 +110,177 @@
       transition:.18s ease;
       white-space:nowrap;
     }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.32)}
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.34);
+      box-shadow: var(--shadow2);
+    }
     .btn.primary{
       background: linear-gradient(135deg, rgba(120,166,255,.95), rgba(105,240,194,.92));
       color:#06101d;
       border-color: transparent;
-      font-weight:700;
+      font-weight:800;
     }
-    .hero{
-      padding:56px 0 28px;
+    .btn.ghost{
+      background: rgba(255,255,255,.02);
+      border-color: rgba(255,255,255,.14);
     }
+
+    /* Hero */
+    .hero{padding:56px 0 32px}
     .hero-grid{
       display:grid; grid-template-columns: 1.15fr .85fr; gap:22px;
       align-items:start;
     }
     h1{
-      margin:0 0 12px;
+      margin:0 0 14px;
       font-size: clamp(34px, 4.2vw, 54px);
-      line-height:1.05;
+      line-height:1.03;
       letter-spacing:-.8px;
     }
     .sub{
       margin:0 0 20px;
       color:var(--muted);
-      font-size: clamp(16px, 1.4vw, 18px);
-      max-width: 56ch;
+      font-size: clamp(16px, 1.35vw, 18px);
+      max-width: 60ch;
     }
+
     .pillrow{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 22px}
     .pill{
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
       color: var(--muted);
       padding:8px 10px;
       border-radius:999px;
       font-size:13px;
     }
+
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--line);
-      border-radius: var(--radius);
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border:1px solid var(--line2);
+      border-radius: var(--radius2);
       box-shadow: var(--shadow);
       padding:18px;
     }
+
+    .card.hover:hover{
+      transform: translateY(-2px);
+      transition:.18s ease;
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 22px 52px rgba(0,0,0,.42);
+    }
+
     .kpis{display:grid; grid-template-columns:1fr 1fr; gap:12px}
     .kpi{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(6,16,29,.35);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(6,16,29,.36);
       border-radius:16px;
       padding:14px;
     }
-    .kpi strong{display:block; font-size:18px}
+    .kpi strong{display:block; font-size:16px; letter-spacing:-.1px}
     .kpi span{color:var(--muted); font-size:13px}
-    section{padding:28px 0}
-    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
-    .grid2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+      margin:18px 0;
+    }
+
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+
+    .badge{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:14px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      margin-top:5px;
+      flex: 0 0 auto;
+    }
+
+    /* Sections */
     .h2{
-      margin:0 0 12px;
-      font-size: 26px;
-      letter-spacing:-.2px;
+      margin:0 0 10px;
+      font-size: 28px;
+      letter-spacing:-.25px;
     }
     .p{margin:0; color:var(--muted)}
+
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .grid2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
+
     .item h3{margin:0 0 8px; font-size:18px}
     .item p{margin:0; color:var(--muted); font-size:14px}
     .list{margin:12px 0 0; padding:0 0 0 18px; color:var(--muted); font-size:14px}
+    .list li{margin:6px 0}
+
     .tag{
       display:inline-block; margin-top:10px;
       font-size:12px; color:#06101d;
       background: rgba(105,240,194,.95);
       border-radius:999px;
       padding:6px 10px;
-      font-weight:700;
+      font-weight:800;
     }
+
     .steps{display:grid; grid-template-columns: repeat(4, 1fr); gap:14px}
     .step strong{display:block; margin-bottom:6px}
-    .divider{height:1px; background:var(--line); margin:12px 0}
+    .step{color:var(--muted); font-size:14px}
+    .step strong{color:var(--text); font-size:14px}
+
+    /* Footer */
     .footer{
-      padding:28px 0 46px;
+      padding:22px 0 46px;
       color:var(--muted);
       font-size:13px;
     }
-    .cta{
-      display:flex; gap:12px; flex-wrap:wrap; margin-top:16px;
+    .footer .footrow{
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      align-items:center;
     }
-    .badge{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:14px; border-radius:16px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-    }
-    .dot{width:10px; height:10px; border-radius:99px; background:var(--accent)}
+
+    /* Mobile */
     @media (max-width: 920px){
-      .hero-grid{grid-template-columns:1fr; }
+      .hero-grid{grid-template-columns:1fr}
       .grid3,.grid2,.steps{grid-template-columns:1fr}
       .navlinks{display:none}
+      .brand-logo{height:34px}
     }
   </style>
 </head>
+
 <body>
 
   <header class="nav">
     <div class="row">
+      <!-- ✅ Reemplaza la ruta por donde guardes el archivo -->
+      <!-- Ej: assets/metriclab-logo.png  |  imagenes/metriclab-logo.png  |  metriclab-logo.png -->
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <span>MetricLab</span>
+        <img src="imagenes/metriclab-logo.png" alt="MetricLab" class="brand-logo">
       </div>
-      <nav class="navlinks">
+
+      <nav class="navlinks" aria-label="Navegación principal">
         <a href="#servicios">Servicios</a>
         <a href="#metodo">Método</a>
         <a href="#planes">Planes</a>
         <a href="#contacto">Contacto</a>
       </nav>
+
       <a class="btn primary" href="#contacto">Agendar diagnóstico</a>
     </div>
   </header>
 
   <main class="wrap">
 
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-grid">
         <div>
           <h1>Estrategia, control de gestión y tecnología.<br/>Aterrizado para pymes en Chile.</h1>
+
           <p class="sub">
             Implementamos un sistema de gestión que te permite <b>ver el negocio con claridad</b>:
             indicadores correctos, presupuesto/forecast, flujo de caja y tableros (BI).
@@ -195,9 +295,14 @@
           </div>
 
           <div class="cta">
-            <!-- Reemplaza el WhatsApp y correo por los tuyos -->
-            <a class="btn primary" href="https://wa.me/569XXXXXXXX?text=Hola%20MetricLab%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20de%20control%20de%20gesti%C3%B3n." target="_blank" rel="noreferrer">WhatsApp</a>
-            <a class="btn" href="mailto:contacto@tudominio.cl?subject=Diagn%C3%B3stico%20Control%20de%20Gesti%C3%B3n&body=Hola%2C%20quiero%20cotizar%20un%20diagn%C3%B3stico%20para%20mi%20empresa.%0A%0AIndustria%3A%0AVentas%20mensuales%20aprox%3A%0AColaboradores%3A%0A">Correo</a>
+            <!-- Reemplaza WhatsApp y correo por los tuyos -->
+            <a class="btn primary"
+               href="https://wa.me/569XXXXXXXX?text=Hola%20MetricLab%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20de%20control%20de%20gesti%C3%B3n."
+               target="_blank" rel="noreferrer">WhatsApp</a>
+
+            <a class="btn ghost"
+               href="mailto:contacto@tudominio.cl?subject=Diagn%C3%B3stico%20Control%20de%20Gesti%C3%B3n&body=Hola%2C%20quiero%20cotizar%20un%20diagn%C3%B3stico%20para%20mi%20empresa.%0A%0AIndustria%3A%0AVentas%20mensuales%20aprox%3A%0AColaboradores%3A%0A">Correo</a>
+
             <a class="btn" href="#planes">Ver planes</a>
           </div>
 
@@ -208,14 +313,17 @@
             <div>
               <b>Promesa de valor (90 días):</b>
               <div style="color:var(--muted); font-size:14px; margin-top:4px">
-                indicadores claros, ritual de seguimiento mensual, tablero de gestión y un plan de mejoras priorizado.
+                indicadores claros, ritual de seguimiento mensual, tablero de gestión y plan de mejoras priorizado.
               </div>
             </div>
           </div>
         </div>
 
         <aside class="card">
-          <div style="margin-bottom:12px; font-weight:800; letter-spacing:.2px;">Lo que instalamos en tu empresa</div>
+          <div style="margin-bottom:12px; font-weight:800; letter-spacing:.2px;">
+            Lo que instalamos en tu empresa
+          </div>
+
           <div class="kpis">
             <div class="kpi">
               <strong>Tablero Gerencial</strong>
@@ -249,14 +357,15 @@
       </div>
     </section>
 
-    <section id="servicios">
+    <!-- SERVICIOS -->
+    <section id="servicios" class="section">
       <h2 class="h2">Servicios</h2>
       <p class="p">Trabajamos con entregables concretos. Sin consultoría eterna.</p>
 
-      <div style="height:14px"></div>
+      <div style="height:16px"></div>
 
       <div class="grid3">
-        <div class="card item">
+        <div class="card item hover">
           <h3>1) Diagnóstico de Control de Gestión</h3>
           <p>Radiografía del negocio + plan de 6–12 meses. Punto de partida para ordenar y priorizar.</p>
           <ul class="list">
@@ -267,7 +376,7 @@
           </ul>
         </div>
 
-        <div class="card item">
+        <div class="card item hover">
           <h3>2) Implementación Control de Gestión</h3>
           <p>Instalamos un sistema: presupuesto, seguimiento mensual y tablero gerencial.</p>
           <ul class="list">
@@ -278,7 +387,7 @@
           </ul>
         </div>
 
-        <div class="card item">
+        <div class="card item hover">
           <h3>3) Planificación Estratégica Aterrizada</h3>
           <p>Objetivos, metas e iniciativas con responsables. Estrategia que se ejecuta.</p>
           <ul class="list">
@@ -290,10 +399,10 @@
         </div>
       </div>
 
-      <div style="height:14px"></div>
+      <div style="height:16px"></div>
 
       <div class="grid2">
-        <div class="card item">
+        <div class="card item hover">
           <h3>4) RRHH Estratégico (con números)</h3>
           <p>Transformamos RRHH en palanca de negocio: estructura, dotación y desempeño.</p>
           <ul class="list">
@@ -304,7 +413,7 @@
           </ul>
         </div>
 
-        <div class="card item">
+        <div class="card item hover">
           <h3>5) Datos, BI y Automatización</h3>
           <p>Consolidación de data + reportes automáticos + tableros claros para decidir.</p>
           <ul class="list">
@@ -317,40 +426,47 @@
       </div>
     </section>
 
-    <section id="metodo">
-      <h2 class="h2">Método de trabajo</h2>
-      <p class="p">Un proceso simple, medible y sin fricción.</p>
+    <!-- METODO -->
+    <section id="metodo" class="section-tight">
+      <div class="card">
+        <h2 class="h2" style="margin-bottom:8px;">Método de trabajo</h2>
+        <p class="p">Un proceso simple, medible y sin fricción.</p>
 
-      <div style="height:14px"></div>
+        <div style="height:16px"></div>
 
-      <div class="steps">
-        <div class="card step">
-          <strong>Semana 1–2</strong>
-          Diagnóstico y levantamiento: datos, procesos, KPIs, pain points.
-        </div>
-        <div class="card step">
-          <strong>Semana 3–6</strong>
-          Diseño del modelo: KPIs, presupuesto/forecast, estructura de reportes y rituales.
-        </div>
-        <div class="card step">
-          <strong>Semana 7–10</strong>
-          Implementación: tablero, plantillas, automatizaciones, capacitación del equipo.
-        </div>
-        <div class="card step">
-          <strong>Semana 11–12</strong>
-          Puesta en marcha: comité mensual, ajustes, plan de mejoras priorizado.
+        <div class="steps">
+          <div class="card step">
+            <strong>Semana 1–2</strong>
+            Diagnóstico y levantamiento: datos, procesos, KPIs, pain points.
+          </div>
+
+          <div class="card step">
+            <strong>Semana 3–6</strong>
+            Diseño del modelo: KPIs, presupuesto/forecast, estructura de reportes y rituales.
+          </div>
+
+          <div class="card step">
+            <strong>Semana 7–10</strong>
+            Implementación: tablero, plantillas, automatizaciones y capacitación del equipo.
+          </div>
+
+          <div class="card step">
+            <strong>Semana 11–12</strong>
+            Puesta en marcha: comité mensual, ajustes y plan de mejoras priorizado.
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="planes">
+    <!-- PLANES -->
+    <section id="planes" class="section">
       <h2 class="h2">Planes</h2>
       <p class="p">Puedes partir por proyecto (diagnóstico) y pasar a acompañamiento mensual.</p>
 
-      <div style="height:14px"></div>
+      <div style="height:16px"></div>
 
       <div class="grid3">
-        <div class="card item">
+        <div class="card item hover">
           <h3>Starter</h3>
           <p>Diagnóstico + roadmap (ideal para ordenar el primer semestre).</p>
           <ul class="list">
@@ -361,7 +477,7 @@
           </ul>
         </div>
 
-        <div class="card item">
+        <div class="card item hover">
           <h3>Growth</h3>
           <p>Implementación del sistema de control de gestión + tablero.</p>
           <ul class="list">
@@ -372,7 +488,7 @@
           </ul>
         </div>
 
-        <div class="card item">
+        <div class="card item hover">
           <h3>Partner</h3>
           <p>Acompañamiento mensual como “Oficina de Control de Gestión” externa.</p>
           <ul class="list">
@@ -384,7 +500,7 @@
         </div>
       </div>
 
-      <div style="height:14px"></div>
+      <div style="height:16px"></div>
 
       <div class="card">
         <b>Nota:</b> los precios dependen del tamaño y complejidad (data, áreas, sedes).
@@ -392,75 +508,89 @@
       </div>
     </section>
 
-    <section id="contacto">
-      <h2 class="h2">Contacto</h2>
-      <p class="p">Cuéntanos tu situación y te proponemos un plan de 30–90 días.</p>
+    <!-- CONTACTO -->
+    <section id="contacto" class="section-tight">
+      <div class="card">
+        <h2 class="h2">Contacto</h2>
+        <p class="p">Cuéntanos tu situación y te proponemos un plan de 30–90 días.</p>
 
-      <div style="height:14px"></div>
+        <div style="height:16px"></div>
 
-      <div class="grid2">
-        <div class="card">
-          <h3 style="margin:0 0 10px">Agenda un diagnóstico</h3>
-          <p class="p">Responde estas 4 preguntas por WhatsApp o correo y te devolvemos una propuesta rápida:</p>
-          <ul class="list">
-            <li>Industria y tamaño (ventas / colaboradores)</li>
-            <li>Qué te duele hoy (caja, margen, desorden, crecimiento, etc.)</li>
-            <li>Qué herramientas usas (ERP, Excel, CRM)</li>
-            <li>Qué plazo necesitas (30, 60 o 90 días)</li>
-          </ul>
+        <div class="grid2">
+          <div class="card">
+            <h3 style="margin:0 0 10px">Agenda un diagnóstico</h3>
+            <p class="p">Responde estas 4 preguntas por WhatsApp o correo y te devolvemos una propuesta rápida:</p>
+            <ul class="list">
+              <li>Industria y tamaño (ventas / colaboradores)</li>
+              <li>Qué te duele hoy (caja, margen, desorden, crecimiento, etc.)</li>
+              <li>Qué herramientas usas (ERP, Excel, CRM)</li>
+              <li>Qué plazo necesitas (30, 60 o 90 días)</li>
+            </ul>
 
-          <div class="cta">
-            <a class="btn primary" href="https://wa.me/569XXXXXXXX?text=Hola%20MetricLab%2C%20quiero%20agendar%20un%20diagn%C3%B3stico.%20Industria%3A%20__%20%7C%20Ventas%3A%20__%20%7C%20Colaboradores%3A%20__%20%7C%20Dolor%20principal%3A%20__" target="_blank" rel="noreferrer">WhatsApp</a>
-            <a class="btn" href="mailto:contacto@tudominio.cl?subject=Diagn%C3%B3stico%20Control%20de%20Gesti%C3%B3n&body=Hola%2C%20quiero%20agendar%20un%20diagn%C3%B3stico.%0A%0AIndustria%3A%0AVentas%20mensuales%20aprox%3A%0AColaboradores%3A%0ADolor%20principal%3A%0AHerramientas%20actuales%3A%0APlazo%20ideal%3A%2030%2F60%2F90%20d%C3%ADas%0A">Correo</a>
-          </div>
-        </div>
+            <div class="cta">
+              <a class="btn primary"
+                 href="https://wa.me/569XXXXXXXX?text=Hola%20MetricLab%2C%20quiero%20agendar%20un%20diagn%C3%B3stico.%20Industria%3A%20__%20%7C%20Ventas%3A%20__%20%7C%20Colaboradores%3A%20__%20%7C%20Dolor%20principal%3A%20__"
+                 target="_blank" rel="noreferrer">WhatsApp</a>
 
-        <div class="card">
-          <h3 style="margin:0 0 10px">Por qué nosotros</h3>
-          <div class="badge" style="margin-bottom:10px">
-            <div class="dot" aria-hidden="true"></div>
-            <div>
-              <b>Gestión + Datos + Personas</b>
-              <div style="color:var(--muted); font-size:14px; margin-top:4px">
-                Integramos estrategia, finanzas, RRHH y tecnología para que el sistema funcione de verdad.
-              </div>
+              <a class="btn ghost"
+                 href="mailto:contacto@tudominio.cl?subject=Diagn%C3%B3stico%20Control%20de%20Gesti%C3%B3n&body=Hola%2C%20quiero%20agendar%20un%20diagn%C3%B3stico.%0A%0AIndustria%3A%0AVentas%20mensuales%20aprox%3A%0AColaboradores%3A%0ADolor%20principal%3A%0AHerramientas%20actuales%3A%0APlazo%20ideal%3A%2030%2F60%2F90%20d%C3%ADas%0A">Correo</a>
             </div>
           </div>
 
-          <div class="badge" style="margin-bottom:10px">
-            <div class="dot" aria-hidden="true"></div>
-            <div>
-              <b>Implementación (no solo diagnóstico)</b>
-              <div style="color:var(--muted); font-size:14px; margin-top:4px">
-                Te dejamos tableros, plantillas y rutinas instaladas. Si no se usa, no sirve.
+          <div class="card">
+            <h3 style="margin:0 0 10px">Por qué MetricLab</h3>
+
+            <div class="badge" style="margin-bottom:10px">
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <b>Gestión + Datos + Personas</b>
+                <div style="color:var(--muted); font-size:14px; margin-top:4px">
+                  Integramos estrategia, finanzas, RRHH y tecnología para que el sistema funcione de verdad.
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="badge">
-            <div class="dot" aria-hidden="true"></div>
-            <div>
-              <b>Enfoque PyME/Mediana</b>
-              <div style="color:var(--muted); font-size:14px; margin-top:4px">
-                Soluciones simples, rápidas y con impacto. Sin burocracia ni “powerpoints eternos”.
+            <div class="badge" style="margin-bottom:10px">
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <b>Implementación (no solo diagnóstico)</b>
+                <div style="color:var(--muted); font-size:14px; margin-top:4px">
+                  Te dejamos tableros, plantillas y rutinas instaladas. Si no se usa, no sirve.
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="divider"></div>
+            <div class="badge">
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <b>Enfoque PyME/Mediana</b>
+                <div style="color:var(--muted); font-size:14px; margin-top:4px">
+                  Soluciones simples, rápidas y con impacto. Sin burocracia ni “powerpoints eternos”.
+                </div>
+              </div>
+            </div>
 
-          <div style="color:var(--muted); font-size:13px">
-            <b>Ubicación:</b> Chile (remoto o presencial según proyecto).<br/>
-            <b>Horario:</b> coordinable según tu operación.
+            <div class="divider"></div>
+
+            <div style="color:var(--muted); font-size:13px">
+              <b>Ubicación:</b> Chile (remoto o presencial según proyecto).<br/>
+              <b>Horario:</b> coordinable según tu operación.
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
       <div class="divider"></div>
-      © <span id="y"></span> MetricLab — Consultoría en estrategia, control de gestión, datos y RRHH_toggle
-      <script>document.getElementById("y").textContent = new Date().getFullYear()</script>
+      <div class="footrow">
+        <div>© <span id="y"></span> MetricLab — Estrategia · Control · Datos</div>
+        <div style="opacity:.9">Hecho para vender (simple, serio y directo)</div>
+      </div>
+      <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+      </script>
     </footer>
 
   </main>
